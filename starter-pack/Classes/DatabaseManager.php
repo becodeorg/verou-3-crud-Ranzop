@@ -21,9 +21,23 @@ class DatabaseManager
         $this->dbname = $dbname;
     }
 
-    public function connect(): void
+    public function connect():void
     {
+        try{
         // TODO: make the connection to the database
-        $this->connection = null;
+        $dsn = "mysql:host={$this->host};dbname={$this->dbname}";
+        $this->connection = new PDO($dsn,$this->user,$this->password);
+        //we need to set the attributes of the connection
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Connection established!!!";
     }
+    catch (PDOException $ex) {
+        echo "Connection Error -->>", $ex->getMessage();
+        echo "<br>Error Code -->>", $ex->getCode();
+        echo "<br>Error occur in File -->>", $ex->getFile();
+        echo "<br>Error occur in Line on -->>", $ex->getLine();
+
+    }
+}
+
 }

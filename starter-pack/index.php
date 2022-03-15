@@ -27,12 +27,17 @@ $action = $_GET['action'] ?? null;
 
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
+
+
+
 switch ($action) {
     case 'create':
-        $this->create();
+        $cardRepository->create();
+        require 'create.php';
         break;
     default:
-        $this->overview();
+        require 'overview.php';
+        var_dump($_POST);
         break;
 }
 

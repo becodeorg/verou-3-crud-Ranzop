@@ -25,14 +25,10 @@ class CardRepository
     }
 
     // Get all
-    public function get(): array
+    public function get(): PDOStatement
     {
-        // TODO: replace dummy data by real one
-        return [
-            ['Quinten' => 'Paid'],
-            ['Zeus' => 'Pending'],
-            ['Orphelia' => 'Pending'],
-            ['Rebecca' => 'Paid'],
-            ['Jacob' => 'Paid'],
-            ['Hanne' => 'Paid'],
-        ];
+        $query = "SELECT * FROM people";
+        $result = $this->databaseManager->connection->query($query);
+        return $result;
+    }
+}

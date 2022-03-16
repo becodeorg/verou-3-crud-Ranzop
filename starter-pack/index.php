@@ -52,20 +52,20 @@ function overview($databaseManager)
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view
     $cardRepository = new CardRepository($databaseManager);
-    $cards = $cardRepository->get();
+    $cardRepository->get();
     require 'overview.php';
 }
 
 function create($databaseManager)
 {
     $cardRepository = new CardRepository($databaseManager);
-    $cards = $cardRepository->create();
+    $cardRepository->create();
 }
 
 function edit($databaseManager)
 {
     $cardRepository = new CardRepository($databaseManager);
-    $cards = $cardRepository->find();
+    $cardRepository->find();
 }
 
 

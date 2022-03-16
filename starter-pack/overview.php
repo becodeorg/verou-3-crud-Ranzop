@@ -15,6 +15,7 @@
     <?php foreach ($cards as $card) : ?>
         <li><?= $card['id'], $card['name'], $card['amount'], $card['status']?></li>
         <a href="index.php?action=create">create</a><br>
+        <a href="index.php?action=edit&card_id=<?= $card['id'] ;?>">edit</a><br>
     <?php endforeach; ?>
 </ul>
 

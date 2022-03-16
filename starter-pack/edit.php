@@ -11,7 +11,7 @@
 
 <h1>Payment System</h1>
 
-<form action="?action=create" method="POST">
+<form action="?action=edit" method="POST">
 		<label for="name">Input name into database</label><br>
 		<input name="name" type="text" value="Name here"><br><br>
 		<label for="amount">How much?</label><br>
@@ -31,6 +31,8 @@
 <?php
 
 whatIsHappening();
+
+
 
 ?>
 

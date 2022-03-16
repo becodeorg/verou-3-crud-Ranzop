@@ -39,6 +39,9 @@ switch ($action) {
         require "create.php";
         create($databaseManager);
         break;
+    case 'edit':
+        require "edit.php";
+        edit($databaseManager);
     default:
     require "overview.php";
         break;
@@ -57,6 +60,12 @@ function create($databaseManager)
 {
     $cardRepository = new CardRepository($databaseManager);
     $cards = $cardRepository->create();
+}
+
+function edit($databaseManager)
+{
+    $cardRepository = new CardRepository($databaseManager);
+    $cards = $cardRepository->find();
 }
 
 

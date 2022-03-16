@@ -15,10 +15,11 @@ class CardRepository
 
     public function create(): void
     {
-        
-        $values = "{$_POST['name']}, {$_POST['amount']}, {$_POST['status']}";
-        $query = "INSERT INTO `people` (name, amount, status) VALUES ($values)";
+        $values = "'{$_POST['name']}', '{$_POST['amount']}', '{$_POST['status']}'";
+        var_dump($values);
+        $query = "INSERT INTO people (`name`, `amount`, `status`) VALUES ($values)";
         $this->databaseManager->connection->query($query);
+        echo "heifer";
     }
 
     // Get one

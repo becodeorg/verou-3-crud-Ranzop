@@ -11,18 +11,14 @@
 
 <h1>Payment System</h1>
 
-<form method="POST">
+<form action="?action=create" method="POST">
 		<label for="name">Input name into database</label><br>
 		<input name="name" type="text" value="Name here"><br><br>
 		<label for="amount">How much?</label><br>
 		<input name="amount" type="number"><br>
 		<label for="status">Input whether or not this person has paid yet</label><br>
 		<input name="status" type="text" value="Pending or Paid?"><br>
-        <input list="functions" id="action" name="action">
-            <datalist id="functions">
-                <option value="create" name="create">
-            </datalist>
-        <button type="submit" name="submit" id="submit" class="btn btn-primary">Interact with Database!</button>
+        <input type="submit" name="submit" id="submit" class="btn btn-primary">Interact with Database!</input>
 	</form>
 <ul>
     <?php foreach ($cards as $card) : ?>
@@ -30,6 +26,13 @@
         <a href="?action=create">create</a><br>
     <?php endforeach; ?>
 </ul>
+
+<?php
+
+whatIsHappening();
+
+?>
+
 
 </body>
 </html>

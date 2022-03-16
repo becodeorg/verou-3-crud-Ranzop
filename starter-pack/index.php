@@ -13,6 +13,8 @@ require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
+whatIsHappening();
+
 
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
@@ -39,7 +41,6 @@ switch ($action) {
         break;
     default:
     require "overview.php";
-    overview($databaseManager);
         break;
 }
 
@@ -55,7 +56,7 @@ function overview($databaseManager)
 function create($databaseManager)
 {
     $cardRepository = new CardRepository($databaseManager);
-    $cards = $cardRepository -> get();
+    $cards = $cardRepository->create();
 }
 
 

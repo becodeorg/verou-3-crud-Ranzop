@@ -13,6 +13,7 @@ require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
+
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
@@ -20,6 +21,7 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
+var_dump($cards);
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
@@ -32,23 +34,47 @@ $action = $_GET['action'] ?? null;
 
 switch ($action) {
     case 'create':
-        $cardRepository->create();
-        require 'create.php';
+        require "create.php";
+        create($databaseManager);
         break;
     default:
-        require 'overview.php';
-        var_dump($_POST);
+    require "overview.php";
+    overview($databaseManager);
         break;
 }
 
-function overview()
+function overview($databaseManager)
 {
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view
+    $cardRepository = new CardRepository($databaseManager);
+    $cards = $cardRepository->get();
     require 'overview.php';
 }
 
-function create()
+function create($databaseManager)
 {
-    // TODO: provide the create logic
+    $cardRepository = new CardRepository($databaseManager);
+    $cards = $cardRepository -> get();
 }
+
+
+function pre_r($arr)
+{
+    echo '<pre>';
+    print_r($arr);
+    echo '</pre>';
+}
+
+function whatIsHappening()
+{
+    echo '<h2>$_GET</h2>';
+    pre_r($_GET);
+    echo '<h2>$_POST</h2>';
+    pre_r($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    pre_r($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    pre_r($_SESSION);
+};
+

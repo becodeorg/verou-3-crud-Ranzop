@@ -15,7 +15,10 @@ class CardRepository
 
     public function create(): void
     {
-
+        
+        $values = "{$_POST['name']}, {$_POST['amount']}, {$_POST['status']}";
+        $query = "INSERT INTO `people` (name, amount, status) VALUES ($values)";
+        $this->databaseManager->connection->query($query);
     }
 
     // Get one
@@ -27,7 +30,7 @@ class CardRepository
     // Get all
     public function get(): PDOStatement
     {
-        $query = "SELECT * FROM people";
+        $query = "SELECT * FROM `people`";
         $result = $this->databaseManager->connection->query($query);
         return $result;
     }
